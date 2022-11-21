@@ -12,10 +12,7 @@ import Button from "../Button";
 import Input from "../Input";
 import ListItem from "../ListItem";
 import useGetAllTodos from "../../hooks/useGetAllTodos";
-import "dayjs/locale/ru";
-import dayjs from "dayjs";
-
-dayjs.locale("ru");
+import { dateNowIso } from "../../utils";
 
 import styles from "./Todo.module.less";
 
@@ -26,14 +23,12 @@ const Todo = () => {
   const [expire, setExpire] = React.useState("");
   const todos = useGetAllTodos();
 
-  const timestamp = dayjs().toISOString();
-
   const createTodo = async () => {
     const docRef = await addDoc(collection(db, "todos"), {
       header,
       description,
       status: "not completed",
-      createdAt: timestamp,
+      createdAt: dateNowIso,
       expire,
     });
 

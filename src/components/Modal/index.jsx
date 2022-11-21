@@ -1,9 +1,11 @@
 import React from "react";
 import { createPortal } from "react-dom";
-import { useAutoAnimate } from "@formkit/auto-animate/react";
 import IconButton from "../IconButton";
 import Input from "../Input";
-
+import Button from "../Button";
+import { doc, updateDoc } from "firebase/firestore";
+import { db } from "../../firebase";
+import { dateIsBefore } from "../../utils";
 import { ReactComponent as Close } from "../../assets/close.svg";
 import { ReactComponent as Check } from "../../assets/check.svg";
 import { ReactComponent as CheckFilled } from "../../assets/check-filled.svg";
@@ -11,10 +13,6 @@ import { ReactComponent as Cancel } from "../../assets/cancel.svg";
 import { ReactComponent as Link } from "../../assets/link.svg";
 
 import styles from "./Modal.module.less";
-import Button from "../Button";
-import { doc, updateDoc } from "firebase/firestore";
-import { db } from "../../firebase";
-import dayjs from "dayjs";
 
 const Modal = ({
   id,
@@ -33,14 +31,11 @@ const Modal = ({
   setCanceled: outSideCanceledChange,
 }) => {
   const body = document.querySelector("body");
-  const [parent] = useAutoAnimate({ duration: 500 });
   const [header, setHeader] = React.useState(outSideHeader);
   const [description, setDescription] = React.useState(outSideDescription);
   const [expire, setExpire] = React.useState(outSideExpire);
   const [isCompleted, setCompleted] = React.useState(outSideCompleted);
   const [isCanceled, setCanceled] = React.useState(outSideCanceled);
-
-  const today = dayjs().toISOString();
 
   React.useEffect(() => {
     const handleEscape = (e) => {
@@ -69,7 +64,7 @@ const Modal = ({
   };
 
   React.useEffect(() => {
-    if (dayjs(expire).isBefore(today)) {
+    if (dateIsBefore(expire)) {
       setCanceled(true);
     } else setCanceled(false);
   }, [expire]);
@@ -91,11 +86,7 @@ const Modal = ({
 
   return createPortal(
     <div className={styles.overlay} onClick={handleClick}>
-      <div
-        className={styles.root}
-        onClick={(e) => e.stopPropagation()}
-        ref={parent}
-      >
+      <div className={styles.root} onClick={(e) => e.stopPropagation()}>
         <div className={styles.content}>
           <IconButton className={styles.exit} onClick={handleClick}>
             <Close />

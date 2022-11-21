@@ -1,6 +1,8 @@
 import classNames from "classnames";
 import React from "react";
 import IconButton from "../IconButton";
+import Modal from "../Modal";
+import { dateFormatTitle, dateIsBefore } from "../../utils";
 import { ReactComponent as Check } from "../../assets/check.svg";
 import { ReactComponent as CheckFilled } from "../../assets/check-filled.svg";
 import { ReactComponent as Edit } from "../../assets/edit.svg";
@@ -8,13 +10,11 @@ import { ReactComponent as Delete } from "../../assets/delete.svg";
 import { ReactComponent as More } from "../../assets/more.svg";
 import { ReactComponent as Attachment } from "../../assets/attachment.svg";
 import { ReactComponent as Cancel } from "../../assets/cancel.svg";
-
-import styles from "./ListItem.module.less";
 import Popover from "../Popover";
 import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase";
-import Modal from "../Modal";
-import dayjs from "dayjs";
+
+import styles from "./ListItem.module.less";
 
 const ListItem = ({
   id,
@@ -30,16 +30,15 @@ const ListItem = ({
   const [header, setHeader] = React.useState(outSideHeader);
   const [description, setDescription] = React.useState(outSideDescription);
   const [createdAt, setCreatedAt] = React.useState(
-    dayjs(outSideCreatedAt).format("DD.MM.YYYY")
+    dateFormatTitle(outSideCreatedAt)
   );
   const [expire, setExpire] = React.useState(outSideExpire);
 
   const [isCompleted, setCompleted] = React.useState(
     outSideStatus === "completed"
   );
-  const today = dayjs().toISOString();
   const [isCanceled, setCanceled] = React.useState(
-    outSideStatus === "canceled" || dayjs(expire).isBefore(today)
+    outSideStatus === "canceled" || dateIsBefore(expire)
   );
 
   React.useEffect(() => {
@@ -53,7 +52,7 @@ const ListItem = ({
   };
 
   const updateTodo = async () => {
-    if (dayjs(expire).isBefore(today) && !isCompleted) {
+    if (dateIsBefore(expire) && !isCompleted) {
       await updateDoc(doc(db, "todos", id), {
         status: "canceled",
       });

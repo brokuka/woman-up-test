@@ -3,11 +3,11 @@ import DatePicker from "react-datepicker";
 import { ReactComponent as Calendar } from "../../../assets/calendar.svg";
 import { ReactComponent as Remove } from "../../../assets/remove.svg";
 import IconButton from "../../IconButton";
-import dayjs from "dayjs";
+import { dateFormatTitle, dateNow, dateToIso } from "../../../utils";
+import classNames from "classnames";
 
 import styles from "./InputDate.module.less";
 import "react-datepicker/dist/react-datepicker.css";
-import classNames from "classnames";
 
 const NOT_CHOOSE = "Дата истечения: не выбрано";
 
@@ -18,7 +18,7 @@ const InputDate = ({
   className,
 }) => {
   const onChange = (date) => {
-    outSideChange(dayjs(date).toISOString());
+    outSideChange(dateToIso(date));
   };
 
   const onRemove = () => {
@@ -31,9 +31,7 @@ const InputDate = ({
     return (
       <>
         Дата истечения:{" "}
-        <span className={styles.choosed}>
-          {dayjs(expire).format("DD.MM.YYYY hh:mm")}
-        </span>
+        <span className={styles.choosed}>{dateFormatTitle(expire)}</span>
       </>
     );
   };
@@ -57,9 +55,9 @@ const InputDate = ({
             showTimeSelect
             value={expire}
             timeIntervals="15"
-            selected={dayjs().toDate()}
+            selected={dateNow}
             onChange={onChange}
-            minDate={dayjs().toDate()}
+            minDate={dateNow}
             timeFormat="HH:mm:ss"
             customInput={
               <IconButton className={styles.calendar}>
