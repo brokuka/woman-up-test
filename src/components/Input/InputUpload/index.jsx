@@ -1,7 +1,4 @@
 import React from "react";
-import { storage } from "../../../firebase";
-/* import { ref, uploadBytes } from "firebase/storage";
-import { nanoid } from "nanoid"; */
 import IconButton from "../../IconButton";
 import { ReactComponent as Upload } from "../../../assets/upload.svg";
 import { ReactComponent as Remove } from "../../../assets/remove.svg";
@@ -12,11 +9,7 @@ const NOT_UPLOADED = "Прикрепленно: не выбрано";
 const UPLOADED_SINGLE = "Прикреплён: один файл";
 const UPLOADED_MULTIPLE = "Прикрепленно: несколько файлов";
 
-const InputUpload = ({
-  onChange: outSideChange,
-  onUploadChange,
-  attachments,
-}) => {
+const InputUpload = ({ onChange: outSideChange, attachments }) => {
   const inputRef = React.useRef();
 
   const onChange = async (e) => {
