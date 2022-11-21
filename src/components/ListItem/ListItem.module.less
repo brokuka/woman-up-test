@@ -1,0 +1,40 @@
+.root {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1.6rem;
+  padding-bottom: 1.6rem;
+  padding-inline: 1.5rem 1rem;
+  gap: 1.7rem;
+
+  border-radius: var(--radius);
+  background-color: var(--color-primary);
+
+  font-size: 1.4rem;
+  color: var(--color-secondary);
+  font-weight: 600;
+
+  position: relative;
+
+  span {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    cursor: auto;
+  }
+}
+
+.icons {
+  display: flex;
+}
+
+.attached {
+  padding-inline: 4.6rem 1rem;
+}
+
+.attachments {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+
+  transform: translateY(-50%);
+}

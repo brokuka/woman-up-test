@@ -1,0 +1,31 @@
+.root {
+  width: 100%;
+
+  border: none;
+
+  font-family: inherit;
+
+  position: relative;
+
+  resize: none;
+
+  &::placeholder {
+    color: inherit;
+  }
+}
+
+.default {
+  padding: 1rem;
+
+  background-color: var(--color-primary);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+
+  font-size: 1.2rem;
+  color: var(--color-secondary);
+}
+
+.notEditable {
+  cursor: auto;
+  pointer-events: none;
+}

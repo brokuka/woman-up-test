@@ -1,0 +1,46 @@
+.root {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  background: none;
+  border: none;
+
+  position: relative;
+  z-index: 1;
+
+  transition: all 0.2s ease-in-out;
+  outline: none;
+
+  &:not(:disabled):hover::after,
+  &:not(:disabled):focus-visible::after {
+    opacity: 1;
+  }
+
+  &:disabled {
+    cursor: auto;
+  }
+
+  &::after {
+    content: "";
+    width: calc(100% + 10px);
+    height: calc(100% + 10px);
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: -1;
+
+    transform: translate(-50%, -50%);
+
+    background-color: rgba(black, 0.1);
+    border-radius: 50%;
+    opacity: 0;
+
+    transition: inherit;
+  }
+}
+
+.noClick {
+  pointer-events: none;
+}

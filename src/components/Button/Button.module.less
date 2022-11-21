@@ -1,0 +1,32 @@
+.root {
+  background-color: rgba(#422745, 0.85);
+  border: none;
+  border-radius: var(--radius);
+
+  cursor: pointer;
+
+  font-family: inherit;
+  font-size: 1.3rem;
+  color: var(--color-primary);
+
+  transition: all 0.2s ease;
+
+  &:hover:not(:disabled) {
+    background-color: var(--color-secondary);
+  }
+
+  &:disabled {
+    cursor: auto;
+    background-color: #979797;
+
+    color: white;
+  }
+}
+
+.add {
+  padding: 9px 9.5rem;
+}
+
+.save {
+  padding: 4px 6px;
+}

@@ -1,0 +1,51 @@
+.root {
+  position: relative;
+
+  border: none;
+
+  font-family: inherit;
+}
+
+.default {
+  padding: 1rem;
+
+  font-size: 1.2rem;
+  color: var(--color-secondary);
+
+  background-color: var(--color-primary);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.picker {
+  width: fit-content !important;
+  height: 24px !important;
+
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+
+  transform: translateY(-50%);
+
+  > :first-child {
+    height: 100%;
+  }
+}
+
+.choosed {
+  font-weight: 600;
+}
+
+.calendar {
+  height: 24px;
+}
+
+.remove {
+  height: 24px;
+
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+
+  transform: translateY(-50%);
+}
