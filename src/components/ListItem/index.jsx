@@ -42,9 +42,9 @@ const ListItem = ({
     outSideStatus === "canceled" || dayjs(expire).isBefore(today)
   );
 
-  /*   React.useEffect(() => {
+  React.useEffect(() => {
     updateTodo();
-  }, []); */
+  }, []);
 
   const listRef = React.useRef();
 
