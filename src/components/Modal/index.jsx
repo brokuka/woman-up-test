@@ -55,8 +55,6 @@ const Modal = ({
 
   const handleClose = () => {
     setOpen(false);
-    setCompleted(outSideCompleted);
-    setCanceled(outSideCanceled);
   };
 
   const handleClick = () => {
@@ -82,6 +80,8 @@ const Modal = ({
       status: isCompleted ? "completed" : "not completed",
       expire,
     });
+
+    handleClose();
   };
 
   return createPortal(
