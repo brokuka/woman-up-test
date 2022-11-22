@@ -185,8 +185,9 @@ const Modal = ({
                 disabled={
                   !header ||
                   !description ||
-                  description === outSideHeader ||
-                  (header === outSideHeader && isCompleted === outSideCompleted)
+                  (header === outSideHeader &&
+                    description === outSideDescription &&
+                    isCompleted === outSideCompleted)
                 }
               >
                 Сохранить
