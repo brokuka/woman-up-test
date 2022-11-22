@@ -55,6 +55,9 @@ const Modal = ({
   const [expire, setExpire] = React.useState(outSideExpire);
   const [isCompleted, setCompleted] = React.useState(outSideCompleted);
   const [isCanceled, setCanceled] = React.useState(outSideCanceled);
+  const [isValidate, setValidate] = React.useState(false);
+
+  console.log(header.length, description.length);
 
   React.useEffect(() => {
     /* Закрывать при нажатии на кнопку `Esacpe` */
@@ -183,10 +186,10 @@ const Modal = ({
                 type="save"
                 onClick={updateTodo}
                 disabled={
-                  header === outSideHeader &&
-                  isCompleted === outSideCompleted &&
-                  description === outSideDescription &&
-                  expire === outSideExpire
+                  !header ||
+                  !description ||
+                  description === outSideHeader ||
+                  (header === outSideHeader && isCompleted === outSideCompleted)
                 }
               >
                 Сохранить
