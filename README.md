@@ -6,7 +6,7 @@
 
 1.  [Установка](#1-installation)
 2.  [Запуск](#2-running)
-3.  [Building the Documentation](#3-build-the-documentation)
+3.  [Build](#3-build-the-documentation)
 
 ## 1. Установка
 
