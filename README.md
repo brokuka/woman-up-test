@@ -1,41 +1,33 @@
-# Documenting Code With JSDoc Example
-> This project is intended to be used as an example as to how one would document their code to then turn into API Documentation.
+# Список задач
 
-[![pipeline status](https://gitlab.com/CoderU/documenting-code-with-jsdoc/badges/master/pipeline.svg)](https://gitlab.com/CoderU/documenting-code-with-jsdoc/commits/master)
+> Простенький проект списка задач на ReactJS + Firebase.
 
-Source is available in [GitLab](https://gitlab.com/CoderU/documenting-code-with-jsdoc/) and example documentation on the classes is available at [https://coderu.gitlab.io/documenting-code-with-jsdoc](https://coderu.gitlab.io/documenting-code-with-jsdoc).
+## Таблица контента
 
-## Table of Contents
+1.  [Установка](#1-installation)
+2.  [Запуск](#2-running)
+3.  [Building the Documentation](#3-build-the-documentation)
 
-1. [Installation](#1-installation)
-2. [Running](#2-running)
-3. [Building the Documentation](#3-build-the-documentation)
-4. [Release History](#4-release-history)
+## 1. Установка
 
+Установка зависимостей проекта
 
-## 1. Installation
-
-Install the project dependencies
 ```sh
 npm install
 ```
 
-## 2. Running
+## 2. Запуск
 
-Running the project example
+Запуска в `development` режиме
+
 ```sh
-npm start
+npm run dev
 ```
 
-## 3. Building the Documentation
+## 3. Build
 
-Build the jsdoc documentation from the source code
+Запуск сборки проекта
+
 ```sh
-npm run build-documentation
+npm run build
 ```
-
-## 4. Release History
-
-* 0.0.1
-    * Initial release
-
