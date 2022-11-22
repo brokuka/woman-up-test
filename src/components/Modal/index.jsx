@@ -13,6 +13,7 @@ import { ReactComponent as Cancel } from "../../assets/cancel.svg";
 import { ReactComponent as Link } from "../../assets/link.svg";
 
 import styles from "./Modal.module.less";
+import classNames from "classnames";
 
 const Modal = ({
   id,
@@ -93,7 +94,7 @@ const Modal = ({
           </IconButton>
           <Input>
             <Input.TextField
-              className={styles.title}
+              className={classNames(styles.title, styles.change)}
               value={header}
               onChange={setHeader}
               readOnly={false}
