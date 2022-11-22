@@ -5,7 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite",
-		"build": "vite build && firebase deplot -P womanup-c18d9",
+		"build": "vite build && firebase deploy -P womanup-c18d9",
 		"preview": "vite preview"
 	},
 	"dependencies": {
