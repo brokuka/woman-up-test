@@ -1,7 +1,7 @@
 import React from "react";
 import IconButton from "../IconButton";
-import { ReactComponent as Upload } from "../../../assets/upload.svg";
-import { ReactComponent as Remove } from "../../../assets/remove.svg";
+import { ReactComponent as Upload } from "../../assets/upload.svg";
+import { ReactComponent as Remove } from "../../assets/remove.svg";
 
 import styles from "./InputUpload.module.less";
 

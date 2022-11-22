@@ -1,7 +1,7 @@
 import React from "react";
 import DatePicker from "react-datepicker";
-import { ReactComponent as Calendar } from "../../../assets/calendar.svg";
-import { ReactComponent as Remove } from "../../../assets/remove.svg";
+import { ReactComponent as Calendar } from "../../assets/calendar.svg";
+import { ReactComponent as Remove } from "../../assets/remove.svg";
 import IconButton from "../IconButton";
 import { dateFormatTitle, dateNow, dateToIso } from "../../utils";
 import classNames from "classnames";

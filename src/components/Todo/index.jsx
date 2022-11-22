@@ -9,10 +9,12 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import React from "react";
 import { db, storage } from "../../firebase";
 import Button from "../Button";
-import Input from "../Input";
 import ListItem from "../ListItem";
 import useGetAllTodos from "../../hooks/useGetAllTodos";
 import { dateNowIso } from "../../utils";
+import InputTextField from "../InputTextField";
+import InputUpload from "../InputUpload";
+import InputDate from "../InputDate";
 
 import styles from "./Todo.module.less";
 
@@ -24,6 +26,7 @@ const Todo = () => {
   const todos = useGetAllTodos();
 
   const createTodo = async () => {
+    /* Добавление задачи в базу */
     const docRef = await addDoc(collection(db, "todos"), {
       header,
       description,
@@ -33,6 +36,7 @@ const Todo = () => {
     });
 
     if (attachments) {
+      /* Добавление файлов в хранилище */
       attachments.map((item) => {
         const fileRef = ref(storage, `upload/${docRef.id}/${item.name}`);
         uploadBytes(fileRef, item, "data_url").then(async () => {
@@ -61,40 +65,33 @@ const Todo = () => {
     <div className={styles.root}>
       <form className={styles.form} onSubmit={onSubmit}>
         <div className={styles.inputs}>
-          <Input>
-            <Input.TextField
-              onChange={(value) => setHeader(value)}
-              placeholder="Введите заголовок"
-              readOnly={false}
-              value={header}
-            />
-          </Input>
+          <InputTextField
+            onChange={(value) => setHeader(value)}
+            placeholder="Введите заголовок"
+            readOnly={false}
+            value={header}
+          />
 
-          <Input>
-            <Input.TextField
-              className={styles.textarea}
-              onChange={(value) => setDescription(value)}
-              type="textarea"
-              placeholder="Введите описание.."
-              readOnly={false}
-              value={description}
-            />
-          </Input>
+          <InputTextField
+            className={styles.textarea}
+            onChange={(value) => setDescription(value)}
+            type="textarea"
+            placeholder="Введите описание.."
+            readOnly={false}
+            value={description}
+          />
 
-          <Input>
-            <Input.Upload
-              onChange={(value) => setAttachments(value)}
-              type="textarea"
-              placeholder="Введите описание.."
-              readOnly={false}
-              attachments={attachments}
-            />
-          </Input>
+          <InputUpload
+            onChange={(value) => setAttachments(value)}
+            type="textarea"
+            placeholder="Введите описание.."
+            readOnly={false}
+            attachments={attachments}
+          />
 
-          <Input>
-            <Input.Date onChange={setExpire} expire={expire} />
-          </Input>
+          <InputDate onChange={setExpire} expire={expire} />
         </div>
+
         <Button type="add" htmlType="submit" disabled={!header || !description}>
           Добавить
         </Button>

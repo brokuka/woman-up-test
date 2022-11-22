@@ -1,7 +1,8 @@
 import React from "react";
 import { createPortal } from "react-dom";
 import IconButton from "../IconButton";
-import Input from "../Input";
+import InputTextField from "../InputTextField";
+import InputDate from "../InputDate";
 import Button from "../Button";
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase";
@@ -115,41 +116,35 @@ const Modal = ({
           <IconButton className={styles.exit} onClick={handleClick}>
             <Close />
           </IconButton>
-          <Input>
-            <Input.TextField
-              className={classNames(styles.title, styles.change)}
-              value={header}
-              onChange={setHeader}
-              readOnly={false}
-              defaultStyles={false}
-            />
-          </Input>
+          <InputTextField
+            className={classNames(styles.title, styles.change)}
+            value={header}
+            onChange={setHeader}
+            readOnly={false}
+            defaultStyles={false}
+          />
 
           <div className={styles.body}>
             <div className={styles.left}>
               <div className={styles.date}>
                 <span className={styles.createdAt}>{createdAt}</span>
-                <Input>
-                  <Input.Date
-                    expire={expire}
-                    defaultStyles={false}
-                    onChange={setExpire}
-                    className={styles.expire}
-                  />
-                </Input>
+                <InputDate
+                  expire={expire}
+                  defaultStyles={false}
+                  onChange={setExpire}
+                  className={styles.expire}
+                />
               </div>
 
               <div className={styles.description}>
-                <Input>
-                  <Input.TextField
-                    className={classNames(styles.textarea, styles.change)}
-                    value={description}
-                    onChange={setDescription}
-                    readOnly={false}
-                    defaultStyles={false}
-                    type="textarea"
-                  />
-                </Input>
+                <InputTextField
+                  className={classNames(styles.textarea, styles.change)}
+                  value={description}
+                  onChange={setDescription}
+                  readOnly={false}
+                  defaultStyles={false}
+                  type="textarea"
+                />
               </div>
             </div>
             <div className={styles.right}>
