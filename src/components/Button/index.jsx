@@ -3,6 +3,15 @@ import classNames from "classnames";
 
 import styles from "./Button.module.less";
 
+/**
+ * Button - компонент кнопки
+ * - `type` - тип кнопки, может быть: `add` или `save`
+ * - `htmlType` - параметр кнопки из html
+ * - `className` - классовые стили
+ * - `disabled` - отключить кнопку при условии
+ * - `children` - всё что будет включать в себе компонент
+ * - `onClick` - функция обработчик при клике
+ */
 const Button = ({
   type,
   htmlType = "button",

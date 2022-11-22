@@ -16,6 +16,17 @@ import { db } from "../../firebase";
 
 import styles from "./ListItem.module.less";
 
+/**
+ * ListItem - компонент элемента списка который принимает как параметры информацию конкретного документа
+ * - `id` - айди
+ * - `status` - статус задачи: `'not completed'` или `'complete'` или `'canceled'`
+ * - `header` - заголовок
+ * - `attachments` - загруженные файлы
+ * - `createdAt` - дата создания
+ * - `description` - описание
+ * - `expire` - дата истечения
+ */
+
 const ListItem = ({
   id,
   status: outSideStatus,
@@ -48,10 +59,13 @@ const ListItem = ({
   const listRef = React.useRef();
 
   const deleteTodo = async () => {
+    /* Обработчик клика на кнопку,
+		удаляет из базы конкретную задачу */
     await deleteDoc(doc(db, "todos", id));
   };
 
   const updateTodo = async () => {
+    /* Обновить документ в firebase */
     if (dateIsBefore(expire) && !isCompleted) {
       await updateDoc(doc(db, "todos", id), {
         status: "canceled",
@@ -60,6 +74,9 @@ const ListItem = ({
   };
 
   const onOpenModal = () => {
+    /* Обработчик клика на кнопку,
+		которая вызывает модалку и
+		закрывает окно с окно с дополнительными действиями */
     setModal(true);
     setOpen(false);
   };

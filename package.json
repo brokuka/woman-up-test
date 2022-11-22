@@ -5,8 +5,9 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite",
-		"build": "vite build && firebase deploy -P womanup-c18d9",
-		"preview": "vite preview"
+		"build": "vite build",
+		"preview": "vite preview",
+		"doc": "jsdoc -c jsdoc.json"
 	},
 	"dependencies": {
 		"@svgr/rollup": "^6.5.1",

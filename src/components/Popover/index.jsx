@@ -6,6 +6,13 @@ import { ReactComponent as Edit } from "../../assets/edit.svg";
 
 import styles from "./Popover.module.less";
 
+/**
+ * Popover - компонент окна для дополнительных действий
+ * - `state` - проверка на передаваемое состояние, если его нет, то компонент вернёт null
+ * - `setState` - функция которая будет менять передаваемое состояние
+ * - `elementRef` - ссылка на элемент рядом с которым будет рендериться компонент
+ * - `children` - всё что будет включать в себе компонент
+ */
 const Popover = ({ state, setState, elementRef, children }) => {
   if (!state) return null;
 

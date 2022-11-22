@@ -15,6 +15,23 @@ import { ReactComponent as Link } from "../../assets/link.svg";
 import styles from "./Modal.module.less";
 import classNames from "classnames";
 
+/**
+ * Modal - копмонент модального окна, которая принимает как параметры сотояния и обработчики конкретной задачи
+ * - `id` - айди
+ * - `setOpen` - функция которая меняет состояние компонента(вкл\выкл)
+ * - `createdAt` - дата создании
+ * - `attachments` - массив с загруженными данными
+ * - `header` - название
+ * - `setHeader` - функция для изменении названия
+ * - `description` - описание
+ * - `setDescription` - функция изменении описания
+ * - `expire` - дата истечения
+ * - `setExpire` - функция для изменении даты истечения
+ * - `isCompleted` - завершена ли задача
+ * - `setCompleted` - функция для изменении статуса завершённости
+ * - `isCanceled` - отменена ли задача
+ * - `setCanceled` - функция которая задаётё статус отмены
+ */
 const Modal = ({
   id,
   setOpen,
@@ -39,6 +56,7 @@ const Modal = ({
   const [isCanceled, setCanceled] = React.useState(outSideCanceled);
 
   React.useEffect(() => {
+    /* Закрывать при нажатии на кнопку `Esacpe` */
     const handleEscape = (e) => {
       if (e.key !== "Escape") return;
 
@@ -55,26 +73,31 @@ const Modal = ({
   }, []);
 
   const handleClose = () => {
+    /* Обработчик закрытия модалки */
     setOpen(false);
   };
 
   const handleClick = () => {
+    /* Обработчик закрытия модалки по клику */
     handleClose();
   };
 
   React.useEffect(() => {
+    /* Если дата истечения наступило, изменить статус отмены */
     if (dateIsBefore(expire)) {
       setCanceled(true);
     } else setCanceled(false);
   }, [expire]);
 
   const updateTodo = async () => {
+    /* Обновить состояния в задаче */
     outSideCompletedChange(isCompleted);
     outSideHeaderChange(header);
     outSideExpireChange(expire);
     outSideDescriptionChange(description);
     outSideCanceledChange(isCanceled);
 
+    /* Обновить документ в firebase */
     await updateDoc(doc(db, "todos", id), {
       header,
       description,

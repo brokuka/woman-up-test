@@ -3,6 +3,16 @@ import React from "react";
 
 import styles from "./InputTextField.module.less";
 
+/**
+ * InputTextField - компонент текстовых полей
+ * - `onChange` - функция обработчик изменений
+ * - `readOnly` - только чтение(`true`)
+ * - `placeholder` - заглушка
+ * - `className` - классовые стили
+ * - `defaultStyles` - использование стилей по умолчанию (`true`)
+ * - `type` - тип инпута: `input` или `textarea`, по умолчанию: `input`
+ * - `value` - значение(состояние) в поле
+ */
 const InputTextField = ({
   onChange,
   readOnly = true,
