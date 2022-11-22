@@ -2,8 +2,9 @@
 
 > Простенький проект списка задач на ReactJS + Firebase.
 
-[DEMO](https://womanup-c18d9.web.app/)
-![enter image description here](https://skr.sh/i/221122/FgA1EcbU.jpg?download=1&name=%D0%A1%D0%BA%D1%80%D0%B8%D0%BD%D1%88%D0%BE%D1%82%2022-11-2022%2009:41:18.jpg)
+<div align="center"><a href="https://womanup-c18d9.web.app/">DEMO</a></div>
+
+<img src="https://skr.sh/i/221122/FgA1EcbU.jpg?download=1&name=%D0%A1%D0%BA%D1%80%D0%B8%D0%BD%D1%88%D0%BE%D1%82%2022-11-2022%2009:41:18.jpg" alt="demo application screenshot"/>
 
 ## Таблица контента
 
