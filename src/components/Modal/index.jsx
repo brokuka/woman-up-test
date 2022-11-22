@@ -119,7 +119,7 @@ const Modal = ({
               <div className={styles.description}>
                 <Input>
                   <Input.TextField
-                    className={styles.textarea}
+                    className={classNames(styles.textarea, styles.change)}
                     value={description}
                     onChange={setDescription}
                     readOnly={false}
@@ -138,7 +138,10 @@ const Modal = ({
                 )}
 
                 {!isCanceled && (
-                  <IconButton onClick={() => setCompleted(!isCompleted)}>
+                  <IconButton
+                    onClick={() => setCompleted(!isCompleted)}
+                    className={styles.change}
+                  >
                     {isCompleted ? <CheckFilled /> : <Check />}
                   </IconButton>
                 )}
